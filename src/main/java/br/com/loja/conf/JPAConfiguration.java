@@ -15,6 +15,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class JPAConfiguration {
 
+	/**
+	 * Nesta classe estamos criando um único médoto, que será usado pelo Spring para gerar o EntityManager. Este precisa de um adapter 
+	 * e estamos passando um que o Hibernate disponibiliza.
+	 * Criamos também um DataSource que contém as configurações de banco de dados. 
+	Criamos um objeto do tipo Properties para podermos setar algumas configurações, como por exemplo o dialeto usado para a comunicação 
+	com o banco de dados. 
+	Setamos também onde o EntityManager encontrará nossos Models. 
+	Feito isso retornamos nossas configurações para o Spring poder utiliza-las.
+     */
+	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
