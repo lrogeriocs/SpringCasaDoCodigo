@@ -10,30 +10,40 @@
 <title>Livros de java, Android, Iphone, PHP, Ruby e muito mais - Casa do código</title>
 </head>
 <body>
-<form:form action="${s:mvcUrl('PC#gravar').build() }" method="post" commandName="produto">
+<form:form action="${s:mvcUrl('PC#gravar').build() }" method="post" commandName="produto" enctype="multipart/form-data">
 <div>
 	<label>Titulo</label>
-	<input type="text" name="titulo">
+	<form:input path="titulo"/>
 	<form:errors path="titulo"/>
 </div>
 <div>
 	<label>Descricao</label>
-	<textarea rows="10" cols="20" name ="descricao">
-	</textarea>
+	<form:textarea rows="10" cols="20" path="descricao"/>
+	
 	<form:errors path="descricao"/>
 </div>
 <div>
 	<label>Páginas</label>
-	<input type="text" name = "paginas">
+	<form:input path = "paginas"/>
 	<form:errors path="paginas"/>
 </div>
 <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
             <div>
                 <label>${tipoPreco}</label>
-                <input type="text" name="precos[${status.index}].valor">
-                <input type="hidden" name="precos[${status.index}].tipo" value="${tipoPreco}">
+                <form:input path="precos[${status.index}].valor"/>
+                <form:hidden path="precos[${status.index}].tipo" value="${tipoPreco}"/>
             </div>
 </c:forEach>
+<div> 
+<label>Date de lançamento</label>
+<form:input path = "dataLancamento" />
+<form:errors path="dataLancamento"></form:errors>
+</div>
+
+<div> 
+<label>Sumário</label>
+<input name="sumario" type="file"/>
+</div>
 <button type="submit">Cadastrar</button>
 </form:form>
 
